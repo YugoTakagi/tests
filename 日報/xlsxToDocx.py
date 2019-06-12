@@ -9,6 +9,12 @@ sheetName = input("ファイル名(xxx)を入力(xxx.xlsx形式)>>> ")
 doc = docx.Document()
 wb = xlrd.open_workbook(sheetName +".xlsx")
 sheet = wb.sheet_by_index(0)
+#####
+section = doc.sections[0]
+header = section.header
+paragraph = header.paragraphs[0]
+paragraph.size = Pt(16)
+paragraph.text = sheetName
 ################################################
 row = sheet.row_values(0)
 cols = []
