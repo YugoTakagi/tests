@@ -22,15 +22,18 @@ for i, e in enumerate(row):
         if ii == 0:
             doc.add_heading(cols[i][ii], 0)
         else:
-            # print(cols[len(cols)-1][ii].color.type)
-            # doc.add_paragraph(str(cols[len(cols)-1][ii]) +":")
-            #####
-            run = doc.add_paragraph().add_run(str(cols[len(cols)-1][ii]) +"  :")
-            font = run.font
-            font.color.rgb = RGBColor(47, 145, 79)
-            font.size = Pt(8)
-            #####
-            doc.add_paragraph("   " +str(cols[i][ii]))
+            if str(cols[i][ii]) == "":
+                continue
+            else:
+                # print(cols[len(cols)-1][ii].color.type)
+                # doc.add_paragraph(str(cols[len(cols)-1][ii]) +":")
+                #####
+                run = doc.add_paragraph().add_run(str(cols[len(cols)-1][ii]) +"  :")
+                font = run.font
+                font.color.rgb = RGBColor(47, 145, 79)
+                font.size = Pt(8)
+                #####
+                doc.add_paragraph("   " +str(cols[i][ii]))
 ################################################
 doc.save('./{}.docx'.format(sheetName))
 print("fin")
