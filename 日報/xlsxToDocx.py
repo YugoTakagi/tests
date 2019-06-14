@@ -32,6 +32,12 @@ for sheetName in tqdm(sheetNames):
     paragraph = header.paragraphs[0]
     # paragraph.size = Pt(16)
     paragraph.text = sheetName
+     #####__footer__#################################
+    section2 = doc.sections[0]
+    footers2 = section2.footer  # a HeadersFooters collection object
+    default_footer = footers2.paragraphs[0]
+    default_footer.text = "kogakuin   robot   project"
+    ################################################
     ################################################
     row = sheet.row_values(0)#質問内容の保存
     cols = []
@@ -68,6 +74,6 @@ for sheetName in tqdm(sheetNames):
                         #####
                         doc.add_paragraph("   " +str(cols[i][ii]))
     ################################################
-    paragraph.text = sheetName +" #出席人数:{}人".format(len(name)-1)
+    paragraph.text = sheetName +" #出席人数:{}人".format(len(name)-1) +"\t\tKRP"
     doc.save('./{}.docx'.format(sheetName))
 print("fin")
