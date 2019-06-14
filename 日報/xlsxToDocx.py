@@ -50,6 +50,8 @@ for sheetName in tqdm(sheetNames):
         #     continue
         if "名前" == e or "なまえ" == e or "name" == e:
             continue
+        elif "タイムスタンプ" == e:
+            continue
         else:
             for ii, ee in enumerate(cols[i]):
                 # print("{}>>> {}".format(i, cols[i][ii]))
@@ -59,11 +61,6 @@ for sheetName in tqdm(sheetNames):
                     if str(cols[i][ii]) == "":
                         continue
                     else:
-                        # print(cols[len(cols)-1][ii].color.type)
-                        # doc.add_paragraph(str(cols[len(cols)-1][ii]) +":")
-                        #####
-                        # run = doc.add_paragraph().add_run(str(cols[len(cols)-1][ii]) +"  :")
-                        print("name[{}] = {}".format(ii, name[ii]))
                         run = doc.add_paragraph().add_run(str(name[ii]) +"  :")
                         font = run.font
                         font.color.rgb = RGBColor(47, 145, 79)
@@ -71,6 +68,6 @@ for sheetName in tqdm(sheetNames):
                         #####
                         doc.add_paragraph("   " +str(cols[i][ii]))
     ################################################
-    paragraph.text = sheetName +" #出席人数:{}人".format(len(cols[len(cols)-1]))
+    paragraph.text = sheetName +" #出席人数:{}人".format(len(name)-1)
     doc.save('./{}.docx'.format(sheetName))
 print("fin")
