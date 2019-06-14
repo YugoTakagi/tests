@@ -73,6 +73,12 @@ for sheetName in tqdm(sheetNames):
                         font.size = Pt(8)
                         #####
                         doc.add_paragraph("   " +str(cols[i][ii]))
+    doc.add_heading("\t  Thenk you very much today.", 0)
+    for i, e in enumerate(name):
+        if i == 0:
+            continue
+        else:
+            doc.add_paragraph("\t\t\t\t\t " +e)
     ################################################
     paragraph.text = sheetName +" #出席人数:{}人".format(len(name)-1) +"\t\tKRP"
     doc.save('./{}.docx'.format(sheetName))
